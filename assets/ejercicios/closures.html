@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="./">Go back</a>
+    <p>abre la consola</p>
+
+    <script>
+//IIFE
+        (function() {
+            let color = 'green';
+            
+            
+            function printColor() {
+            console.log(color);
+        }
+
+            printColor();
+        })();
+
+        function makeColorPreinter(color) {
+            let colorMessage = "The color is "+color;
+
+            return function () {
+                console.log(colorMessage);
+            }
+        }
+
+        let greenColorPrinter = makeColorPreinter("green");
+        console.log(greenColorPrinter());
+
+//los closer permiten variables privadas
+
+        function makeCounter(n) {
+            let count = n;
+
+            return {
+                increase: function () {
+                    count++;
+                },
+                decrease: function () {
+                    count = count-1;
+                },
+                getCount: function () {
+                    return count;
+                },
+            };
+        }
+
+        let counter = makeCounter(7);
+        console.log("The count is"+counter.getCount());
+        counter.decrease();
+        console.log("The count is"+counter.getCount());
+        counter.increase();
+        console.log("The count is"+counter.getCount());
+
+    </script>
+    
+</body>
+</html>

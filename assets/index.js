@@ -1,4 +1,4 @@
-
+//Media Player 
 function MediaPlayer(config) {
   this.media = config.el
 }
@@ -18,6 +18,9 @@ MediaPlayer.prototype.togglePlay = function() {
         this.pause();
     }
 };
+
+
+//index.js
 
 const video = document.querySelector("video");
 const button = document.querySelector("button");    
