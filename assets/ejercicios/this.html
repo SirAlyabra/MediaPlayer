@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This</title>
+</head>
+<body>
+    <a href="../ejercicios/">Go back</a>
+    <p>Abre la consola</p>
+    <h1>
+        <code>this</code> se refiere a un objeto . Ese objeto es el que se está ejecutando un pedazo de código.
+    </h1>
+
+    <script>
+        //this scope global
+       console.log('This globla'+this);
+       
+       //this en el scoppe de una funcion
+
+       function whoIsThis() {
+           return this;
+       }
+
+       console.log('who is this dentro de una funcion '+whoIsThis())
+
+       //this en el scope de ina funcion en el mo stric
+       function whoIsThisStrict() {
+           'use strict';
+           return this;
+       }
+       console.log('who is this dentro de una funcion en el modo stricto '+whoIsThisStrict());
+
+       //This en el contecto de un objeto
+
+       const person = {
+           name: 'Gabriel',
+           saludar: function () {
+
+            console.log('Hola soy this '+this)
+            console.log('Hola soy this.name '+this.name)
+           }
+       }
+
+       person.saludar();
+
+// this cuando sacamos a una funcion de un objeto; undefined
+       const accion = person.saludar;
+       accion();
+// this en el contexto de una clase
+
+function Person (name) {
+    //this = {}
+    this.name = name;
+}
+
+Person.prototype.saludar = function() {
+    console.log("yhis.name Me lla this dento de constructos definida con .prototyoe "+this.name)
+}
+
+const angela = new Person("Angela");
+angela.saludar();
+
+
+//Esto no funciona
+// const federico =  Person("Federico");
+
+
+    </script>
+</body>
+</html>

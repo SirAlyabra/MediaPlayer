@@ -63,7 +63,9 @@ AutoPlay.prototype.run = function(player) {
 const video = document.querySelector("video");
 const button = document.querySelector('#playButton');  
 const buttonMuted = document.querySelector('#mutedButton')  
-const player = new MediaPlayer({el: video, plugins: [new AutoPlay()]});
+const player = new MediaPlayer({el: video, plugins: [
+  //new AutoPlay()
+]});
 
 button.onclick = () => player.togglePlay();
 buttonMuted.onclick = () => player.toggleMuted();
