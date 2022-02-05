@@ -36,6 +36,14 @@ MediaPlayer.prototype.unmute = function() {
   this.media.muted = false;
 }
 
+MediaPlayer.prototype.toggleMuted = function() {
+  if(this.media.muted) {
+      this.unmute();
+  } else {
+      this.mute();
+  }
+};
+
 //plugin Autoplay
 function AutoPlay() {
 
@@ -53,7 +61,9 @@ AutoPlay.prototype.run = function(player) {
 //index.js
 
 const video = document.querySelector("video");
-const button = document.querySelector("button");    
+const button = document.querySelector('#playButton');  
+const buttonMuted = document.querySelector('#mutedButton')  
 const player = new MediaPlayer({el: video, plugins: [new AutoPlay()]});
 
 button.onclick = () => player.togglePlay();
+buttonMuted.onclick = () => player.toggleMuted();
