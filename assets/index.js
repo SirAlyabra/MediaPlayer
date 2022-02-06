@@ -9,7 +9,7 @@ function MediaPlayer(config) {
 MediaPlayer.prototype._initPlugins = function() {
   const player = {
     play: () => this.play(),
-    puase: () => this.pause(),
+    pause: () => this.pause(),
     media: this.media,
 
     get muted() {
@@ -70,7 +70,34 @@ AutoPlay.prototype.run = function(player) {
 };
 
 
-//
+// AutoPause
+
+class AutoPause {
+  constructor() {
+    this.threshold = 0.25;
+    this.handleIntersection = this.handleIntersection.bind(this);
+  }
+
+  run(player) {
+    this.player = player;
+
+    const observer = new IntersectionObserver(this.handleIntersection, {
+      threshold:  this.threshold
+     });
+     observer.observe(this.player.media)
+  }
+  handleIntersection(entries) {
+    const entry = entries[0];
+
+    const isVisible = entry.intersectionRatio >  this.threshold
+
+    if(isVisible){
+      this.player.play();
+    } else {
+      this.player.pause();
+    }
+  }
+}
 
 
 //index.js
@@ -78,7 +105,7 @@ AutoPlay.prototype.run = function(player) {
 const video = document.querySelector("video");
 const button = document.querySelector('#playButton');  
 const buttonMuted = document.querySelector('#mutedButton')  
-const player = new MediaPlayer({el: video, plugins: [new AutoPlay()
+const player = new MediaPlayer({el: video, plugins: [new AutoPlay(), new AutoPause()
 ]});
 
 button.onclick = () => player.togglePlay();
