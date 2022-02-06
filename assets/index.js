@@ -7,8 +7,21 @@ function MediaPlayer(config) {
 }
 
 MediaPlayer.prototype._initPlugins = function() {
+  const player = {
+    play: () => this.play(),
+    puase: () => this.pause(),
+    media: this.media,
+
+    get muted() {
+      return this.media.muted;
+    },
+    set muted(value) {
+      this.media.muted = value;
+    },
+  };
+  
   this.plugins.forEach(plugin => {
-    plugin.run(this);
+    plugin.run(player);
   })
 }
 
@@ -50,7 +63,9 @@ function AutoPlay() {
 }
 
 AutoPlay.prototype.run = function(player) {
-  player.mute();
+  if(!player.muted){
+    player.muted = true;
+  }
   player.play();
 };
 
@@ -63,8 +78,7 @@ AutoPlay.prototype.run = function(player) {
 const video = document.querySelector("video");
 const button = document.querySelector('#playButton');  
 const buttonMuted = document.querySelector('#mutedButton')  
-const player = new MediaPlayer({el: video, plugins: [
-  //new AutoPlay()
+const player = new MediaPlayer({el: video, plugins: [new AutoPlay()
 ]});
 
 button.onclick = () => player.togglePlay();
