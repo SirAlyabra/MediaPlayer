@@ -4,11 +4,18 @@
   "description": "Reproductor media player",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "parcel index.html /assets/ejercicios/index.html assets/ejercicios/**/*.html"
   },
   "keywords": [
     "Player"
   ],
   "author": "Sir Alyabra <alyabra.vargas@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5",
+    "typescript": "^4.5.5"
+  },
+  "browserslist": [
+    "last 1 Chrome version"
+  ]
 }
