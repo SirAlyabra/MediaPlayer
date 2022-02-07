@@ -118,56 +118,88 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"assets/ejercicios/typescript/index.ts":[function(require,module,exports) {
-// console.log("Helo type");
-// function add(a: number, b: number) {
+// // console.log("Helo type");
+//import { StringifyOptions } from "querystring";
+// // function add(a: number, b: number) {
+// //     return a + b;
+// // }
+// // const sum = add(2,3);
+// //Boolean
+// let muted: boolean = true;
+// muted = false;
+// // muted = "callado";
+// //marca error ppor que en typeScript no se pueden modificar el tipo 
+// //numeros
+// let age = "6"
+// let numerador: number  =4;
+// let denominador: number = 6;
+// let resultado = numerador / denominador;
+// //string
+// let nombre: string = 'Alex';
+// //arreglos mezcaldos o expeficios
+// let people: string[] = [];//solo string
+// people = ["Isabel", "Lizbeth", "Karen"];
+// people.push("ddf");
+// let peopleAndNumber: Array< string | number > = [];
+// peopleAndNumber.push(4);
+// peopleAndNumber.push("as");
+// enum Color {
+//     Rojo,
+//     Verde,
+//     Azul,
+// }
+// let colorFavorito: Color = Color.Rojo;
+// console.log("Mi color favorito es "+colorFavorito);//Te da la posicion
+// enum Colores {
+//     Rojo = "Rojo",
+//     Verde = "Verde",
+//     Azul = "azul",
+// }
+// //asi si te da el valor
+// // any para cambiar
+// let comodin: any = "joker";
+// comodin ={type: "Wildcard"}
+// function add(a: number, b: number): number {
 //     return a + b;
 // }
-// const sum = add(2,3);
-//Boolean
-var muted = true;
-muted = false; // muted = "callado";
-//marca error ppor que en typeScript no se pueden modificar el tipo 
-//numeros
-
-var age = "6";
-var numerador = 4;
-var denominador = 6;
-var resultado = numerador / denominador; //string
-
-var nombre = 'Alex'; //arreglos mezcaldos o expeficios
-
-var people = []; //solo string
-
-people = ["Isabel", "Lizbeth", "Karen"];
-people.push("ddf");
-var peopleAndNumber = [];
-peopleAndNumber.push(4);
-peopleAndNumber.push("as");
+// const sum = add(4, 5);
+// function createAdder (a: number): (number) => number {
+//     return function (b: number) {
+//         return b + a;
+//     }
+// }
+// const addFour = createAdder(4);
+// const fourPlus6 = addFour(6);
+// function fullName(firstName: string, lastName: string ='Smith'): string {
+//     return firstName+lastName;
+// }
+// const richard = fullName('Alec');
+// console.log(richard);
 var Color;
 
 (function (Color) {
-  Color[Color["Rojo"] = 0] = "Rojo";
-  Color[Color["Verde"] = 1] = "Verde";
-  Color[Color["Azul"] = 2] = "Azul";
+  Color["Rojo"] = "Rojo";
+  Color["Verde"] = "Verde";
 })(Color || (Color = {}));
 
-var colorFavorito = Color.Rojo;
-console.log("Mi color favorito es " + colorFavorito); //Te da la posicion
-
-var Colores;
-
-(function (Colores) {
-  Colores["Rojo"] = "Rojo";
-  Colores["Verde"] = "Verde";
-  Colores["Azul"] = "azul";
-})(Colores || (Colores = {})); //asi si te da el valor
-// any para cambiar
-
-
-var comodin = "joker";
-comodin = {
-  type: "Wildcard"
+var rect = {
+  ancho: 4,
+  alto: 8,
+  color: Color.Rojo
 };
+
+function area(r) {
+  return r.alto * r.ancho;
+}
+
+var areaRect = area(rect);
+console.log(areaRect);
+
+rect.toString = function () {
+  return "Un rectangulo" + this.color;
+};
+
+console.log(rect.toString());
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
