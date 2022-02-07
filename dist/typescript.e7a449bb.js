@@ -118,13 +118,56 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"assets/ejercicios/typescript/index.ts":[function(require,module,exports) {
-console.log("Helo type");
+// console.log("Helo type");
+// function add(a: number, b: number) {
+//     return a + b;
+// }
+// const sum = add(2,3);
+//Boolean
+var muted = true;
+muted = false; // muted = "callado";
+//marca error ppor que en typeScript no se pueden modificar el tipo 
+//numeros
 
-function add(a, b) {
-  return a + b;
-}
+var age = "6";
+var numerador = 4;
+var denominador = 6;
+var resultado = numerador / denominador; //string
 
-var sum = add(2, 3);
+var nombre = 'Alex'; //arreglos mezcaldos o expeficios
+
+var people = []; //solo string
+
+people = ["Isabel", "Lizbeth", "Karen"];
+people.push("ddf");
+var peopleAndNumber = [];
+peopleAndNumber.push(4);
+peopleAndNumber.push("as");
+var Color;
+
+(function (Color) {
+  Color[Color["Rojo"] = 0] = "Rojo";
+  Color[Color["Verde"] = 1] = "Verde";
+  Color[Color["Azul"] = 2] = "Azul";
+})(Color || (Color = {}));
+
+var colorFavorito = Color.Rojo;
+console.log("Mi color favorito es " + colorFavorito); //Te da la posicion
+
+var Colores;
+
+(function (Colores) {
+  Colores["Rojo"] = "Rojo";
+  Colores["Verde"] = "Verde";
+  Colores["Azul"] = "azul";
+})(Colores || (Colores = {})); //asi si te da el valor
+// any para cambiar
+
+
+var comodin = "joker";
+comodin = {
+  type: "Wildcard"
+};
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
